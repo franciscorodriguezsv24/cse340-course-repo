@@ -1,24 +1,12 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categories</title>
-    <link rel="stylesheet" href="../public/css/main.css">
-</head>
-<body>
-    <%- include('partials/header') %>
-    <main>
-        <h1><%= title %></h1>
-        <p>Browse service opportunities by category:</p>
-        <ul>
-            <li>Environmental</li>
-            <li>Educational</li>
-            <li>Community Service</li>
-            <li>Health and Wellness</li>
-        </ul>
-    </main>
-    <%- include('partials/footer') %>
-</body>
-</html>
+<%- include('partials/header') %>
+<main id="main-content" class="page">
+    <h1 class="page__title"><%= title %></h1>
+    <p class="page__intro">Browse service opportunities by category:</p>
+    <ul class="pill-list">
+        <li class="pill-list__item">Environmental</li>
+        <li class="pill-list__item">Educational</li>
+        <li class="pill-list__item">Community Service</li>
+        <li class="pill-list__item">Health and Wellness</li>
+    </ul>
+</main>
+<%- include('partials/footer') %>

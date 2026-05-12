@@ -1,23 +1,29 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organizations</title>
-    <link rel="stylesheet" href="../public/css/main.css">
-</head>
-<body>
-    <%- include('partials/header') %>
-    <main>
-        <h1><%= title %></h1>
-        <p>Here are a few of our partner organizations:</p>
-        <ul>
-            <li><img src="/images/brightfuture-logo.png" alt="BrightFuture Builders logo"><strong>BrightFuture Builders</strong>: info@brightfuture.org</li>
-            <li><img src="/images/greenharvest-logo.png" alt="GreenHarvest Growers logo"><strong>GreenHarvest Growers</strong>: contact@greenharvest.org</li>
-            <li><img src="/images/unityserve-logo.png" alt="UnityServe Volunteers logo"><strong>UnityServe Volunteers</strong>: hello@unityserve.org</li>
-        </ul>
-    </main>
-    <%- include('partials/footer') %>
-</body>
-</html>
+<%- include('partials/header') %>
+<main id="main-content" class="page">
+    <h1 class="page__title"><%= title %></h1>
+    <p class="page__intro">Here are a few of our partner organizations:</p>
+    <ul class="org-list">
+        <li class="org-list__item">
+            <img class="org-list__logo" src="/images/brightfuture-logo.png" alt="">
+            <div class="org-list__body">
+                <strong class="org-list__name">BrightFuture Builders</strong>
+                <a class="org-list__email" href="mailto:info@brightfuture.org">info@brightfuture.org</a>
+            </div>
+        </li>
+        <li class="org-list__item">
+            <img class="org-list__logo" src="/images/greenharvest-logo.png" alt="">
+            <div class="org-list__body">
+                <strong class="org-list__name">GreenHarvest Growers</strong>
+                <a class="org-list__email" href="mailto:contact@greenharvest.org">contact@greenharvest.org</a>
+            </div>
+        </li>
+        <li class="org-list__item">
+            <img class="org-list__logo" src="/images/unityserve-logo.png" alt="">
+            <div class="org-list__body">
+                <strong class="org-list__name">UnityServe Volunteers</strong>
+                <a class="org-list__email" href="mailto:hello@unityserve.org">hello@unityserve.org</a>
+            </div>
+        </li>
+    </ul>
+</main>
+<%- include('partials/footer') %>
