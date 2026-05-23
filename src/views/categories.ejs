@@ -3,10 +3,9 @@
     <h1 class="page__title"><%= title %></h1>
     <p class="page__intro">Browse service opportunities by category:</p>
     <ul class="pill-list">
-        <li class="pill-list__item">Environmental</li>
-        <li class="pill-list__item">Educational</li>
-        <li class="pill-list__item">Community Service</li>
-        <li class="pill-list__item">Health and Wellness</li>
+        <% categories.forEach(category => { %>
+            <li class="pill-list__item"><%= category.name %></li>
+        <% }); %>
     </ul>
 </main>
 <%- include('partials/footer') %>

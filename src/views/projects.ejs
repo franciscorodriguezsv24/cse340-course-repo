@@ -3,18 +3,14 @@
     <h1 class="page__title"><%= title %></h1>
     <h2 class="page__subtitle">Upcoming Service Projects</h2>
     <ul class="card-list">
-        <li class="card-list__item">
-            <span class="card-list__title">Park Cleanup</span>
-            <span class="card-list__text">Join us to clean up local parks and make them beautiful.</span>
-        </li>
-        <li class="card-list__item">
-            <span class="card-list__title">Food Drive</span>
-            <span class="card-list__text">Help collect and distribute food to those in need.</span>
-        </li>
-        <li class="card-list__item">
-            <span class="card-list__title">Community Tutoring</span>
-            <span class="card-list__text">Volunteer to tutor students in various subjects.</span>
-        </li>
+        <% projects.forEach(project => { %>
+            <% const projectDate = new Date(project.project_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }); %>
+            <li class="card-list__item">
+                <span class="card-list__title"><%= projectDate %>: <%= project.title %> (<em><%= project.organization_name %></em>)</span>
+                <span class="card-list__text"><%= project.description %></span>
+                <span class="card-list__meta"><%= project.location %></span>
+            </li>
+        <% }); %>
     </ul>
 </main>
 <%- include('partials/footer') %>

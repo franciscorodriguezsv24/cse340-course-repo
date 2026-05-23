@@ -3,27 +3,15 @@
     <h1 class="page__title"><%= title %></h1>
     <p class="page__intro">Here are a few of our partner organizations:</p>
     <ul class="org-list">
-        <li class="org-list__item">
-            <img class="org-list__logo" src="/images/brightfuture-logo.png" alt="">
-            <div class="org-list__body">
-                <strong class="org-list__name">BrightFuture Builders</strong>
-                <a class="org-list__email" href="mailto:info@brightfuture.org">info@brightfuture.org</a>
-            </div>
-        </li>
-        <li class="org-list__item">
-            <img class="org-list__logo" src="/images/greenharvest-logo.png" alt="">
-            <div class="org-list__body">
-                <strong class="org-list__name">GreenHarvest Growers</strong>
-                <a class="org-list__email" href="mailto:contact@greenharvest.org">contact@greenharvest.org</a>
-            </div>
-        </li>
-        <li class="org-list__item">
-            <img class="org-list__logo" src="/images/unityserve-logo.png" alt="">
-            <div class="org-list__body">
-                <strong class="org-list__name">UnityServe Volunteers</strong>
-                <a class="org-list__email" href="mailto:hello@unityserve.org">hello@unityserve.org</a>
-            </div>
-        </li>
+        <% organizations.forEach(organization => { %>
+            <li class="org-list__item">
+                <img class="org-list__logo" src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo">
+                <div class="org-list__body">
+                    <strong class="org-list__name"><%= organization.name %></strong>
+                    <a class="org-list__email" href="mailto:<%= organization.contact_email %>"><%= organization.contact_email %></a>
+                </div>
+            </li>
+        <% }); %>
     </ul>
 </main>
 <%- include('partials/footer') %>
