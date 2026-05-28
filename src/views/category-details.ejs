@@ -1,18 +1,20 @@
 <%- include('partials/header') %>
 <main id="main-content" class="page">
-    <h1 class="page__title"><%= title %></h1>
-    <h2 class="page__subtitle">Upcoming Service Projects</h2>
+    <h1 class="page__title"><%= category.name %></h1>
+    <p class="page__intro">Service projects in this category:</p>
+
     <% if (projects.length === 0) { %>
-        <p class="page__intro">No upcoming service projects at this time.</p>
+        <p>No service projects are listed in this category yet.</p>
     <% } else { %>
         <ul class="card-list">
             <% projects.forEach(project => { %>
                 <% const projectDate = new Date(project.project_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }); %>
                 <li class="card-list__item">
                     <a class="card-list__title-link" href="/project/<%= project.project_id %>">
-                        <span class="card-list__title"><%= projectDate %>: <%= project.title %></span>
+                        <span class="card-list__title"><%= project.title %></span>
                     </a>
                     <span class="card-list__meta">
+                        <%= projectDate %> &middot;
                         <a class="card-list__org-link" href="/organization/<%= project.organization_id %>"><%= project.organization_name %></a>
                     </span>
                     <span class="card-list__text"><%= project.description %></span>

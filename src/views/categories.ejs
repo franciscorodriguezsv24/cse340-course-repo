@@ -4,7 +4,9 @@
     <p class="page__intro">Browse service opportunities by category:</p>
     <ul class="pill-list">
         <% categories.forEach(category => { %>
-            <li class="pill-list__item"><%= category.name %></li>
+            <li>
+                <a class="pill-list__item" href="/category/<%= category.category_id %>"><%= category.name %></a>
+            </li>
         <% }); %>
     </ul>
 </main>

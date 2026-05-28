@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+<% const projectDate = new Date(project.project_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }); %>
+<main id="main-content" class="page">
+    <article class="detail">
+        <h1 class="page__title"><%= project.title %></h1>
+        <p class="detail__meta">
+            Hosted by
+            <a class="detail__org-link" href="/organization/<%= project.organization_id %>"><%= project.organization_name %></a>
+        </p>
+        <dl class="detail__facts">
+            <div class="detail__fact">
+                <dt>Date</dt>
+                <dd><%= projectDate %></dd>
+            </div>
+            <div class="detail__fact">
+                <dt>Location</dt>
+                <dd><%= project.location %></dd>
+            </div>
+        </dl>
+        <p class="detail__description"><%= project.description %></p>
+
+        <% if (categories && categories.length > 0) { %>
+            <h2 class="page__subtitle">Categories</h2>
+            <ul class="tag-list">
+                <% categories.forEach(category => { %>
+                    <li>
+                        <a class="tag" href="/category/<%= category.category_id %>"><%= category.name %></a>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+    </article>
+</main>
+<%- include('partials/footer') %>

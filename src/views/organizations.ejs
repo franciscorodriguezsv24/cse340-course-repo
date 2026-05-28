@@ -7,7 +7,9 @@
             <li class="org-list__item">
                 <img class="org-list__logo" src="/images/<%= organization.logo_filename %>" alt="<%= organization.name %> logo">
                 <div class="org-list__body">
-                    <strong class="org-list__name"><%= organization.name %></strong>
+                    <a class="org-list__name-link" href="/organization/<%= organization.organization_id %>">
+                        <strong class="org-list__name"><%= organization.name %></strong>
+                    </a>
                     <a class="org-list__email" href="mailto:<%= organization.contact_email %>"><%= organization.contact_email %></a>
                 </div>
             </li>

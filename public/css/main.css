@@ -274,6 +274,16 @@ button:focus-visible {
     color: var(--color-text);
 }
 
+.org-list__name-link {
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+.org-list__name-link:hover .org-list__name {
+    color: var(--color-link-hover);
+    text-decoration: underline;
+}
+
 .org-list__email {
     color: var(--color-link);
     font-weight: 500;
@@ -331,6 +341,186 @@ button:focus-visible {
     color: var(--color-text-muted);
 }
 
+.card-list__meta {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+.card-list__title-link {
+    text-decoration: none;
+    color: var(--color-link);
+}
+
+.card-list__title-link:hover .card-list__title {
+    color: var(--color-link-hover);
+    text-decoration: underline;
+}
+
+.card-list__org-link {
+    color: var(--color-link);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.card-list__org-link:hover {
+    color: var(--color-link-hover);
+    text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Detail pages                                                                */
+/* -------------------------------------------------------------------------- */
+
+.detail {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.detail__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.detail__logo {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.detail__email {
+    color: var(--color-link);
+    font-weight: 500;
+}
+
+.detail__email:hover {
+    color: var(--color-link-hover);
+}
+
+.detail__meta {
+    margin: 0 0 var(--space-md);
+    color: var(--color-text-muted);
+}
+
+.detail__org-link {
+    color: var(--color-link);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.detail__org-link:hover {
+    color: var(--color-link-hover);
+    text-decoration: underline;
+}
+
+.detail__description {
+    margin: var(--space-md) 0 0;
+    color: var(--color-text);
+    max-width: 50rem;
+}
+
+.detail__facts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+    margin: var(--space-md) 0;
+    padding: 0;
+}
+
+@media (min-width: 640px) {
+    .detail__facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.detail__fact {
+    margin: 0;
+}
+
+.detail__fact dt {
+    font-weight: 600;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.detail__fact dd {
+    margin: 0.15rem 0 0;
+    color: var(--color-text);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tag list (category tags on project page)                                    */
+/* -------------------------------------------------------------------------- */
+
+.tag-list {
+    list-style: none;
+    margin: var(--space-sm) 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem var(--space-md);
+    background: var(--color-accent-soft);
+    color: var(--color-accent-hover);
+    font-weight: 600;
+    border-radius: 999px;
+    border: 1px solid #b8d9d3;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.tag:hover {
+    background: #d3e6e3;
+    color: var(--color-accent-hover);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Error pages                                                                 */
+/* -------------------------------------------------------------------------- */
+
+.error {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-xl) var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+.error__code {
+    margin: 0 0 var(--space-sm);
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 10vw, 5rem);
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+}
+
+.error__link {
+    display: inline-block;
+    margin-top: var(--space-md);
+    color: var(--color-link);
+    font-weight: 600;
+}
+
+.error__link:hover {
+    color: var(--color-link-hover);
+}
+
 /* -------------------------------------------------------------------------- */
 /* Category pills                                                              */
 /* -------------------------------------------------------------------------- */
@@ -353,6 +543,12 @@ button:focus-visible {
     font-weight: 600;
     border-radius: 999px;
     border: 1px solid #b8d9d3;
+    text-decoration: none;
+}
+
+a.pill-list__item:hover {
+    background: #d3e6e3;
+    color: var(--color-accent-hover);
 }
 
 /* -------------------------------------------------------------------------- */
