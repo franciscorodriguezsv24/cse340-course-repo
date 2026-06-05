@@ -1,0 +1,48 @@
+<%- include('partials/header') %>
+<main id="main-content" class="page">
+    <h1 class="page__title">Edit Organization</h1>
+    <p class="page__intro">Update this organization's details.</p>
+
+    <% if (errors && errors.length > 0) { %>
+        <div class="form-errors" role="alert" aria-live="polite">
+            <p class="form-errors__title">Please fix the following:</p>
+            <ul class="form-errors__list">
+                <% errors.forEach(error => { %>
+                    <li><%= error.msg %></li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+
+    <form class="form" action="/edit-organization/<%= organization.organization_id %>" method="POST" novalidate>
+        <div class="form__field">
+            <label class="form__label" for="name">Name</label>
+            <input class="form__input" type="text" id="name" name="name"
+                value="<%= organization.name %>" required maxlength="150">
+        </div>
+
+        <div class="form__field">
+            <label class="form__label" for="description">Description</label>
+            <textarea class="form__textarea" id="description" name="description"
+                required minlength="10"><%= organization.description %></textarea>
+        </div>
+
+        <div class="form__field">
+            <label class="form__label" for="contact_email">Contact Email</label>
+            <input class="form__input" type="email" id="contact_email" name="contact_email"
+                value="<%= organization.contact_email %>" required maxlength="255">
+        </div>
+
+        <div class="form__field">
+            <label class="form__label" for="logo_filename">Logo Filename</label>
+            <input class="form__input" type="text" id="logo_filename" name="logo_filename"
+                value="<%= organization.logo_filename %>" required maxlength="255">
+        </div>
+
+        <div class="form__actions">
+            <button class="button button--primary" type="submit">Save Changes</button>
+            <a class="button button--secondary" href="/organizations">Cancel</a>
+        </div>
+    </form>
+</main>
+<%- include('partials/footer') %>

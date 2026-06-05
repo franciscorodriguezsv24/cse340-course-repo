@@ -1,0 +1,61 @@
+<%- include('partials/header') %>
+<main id="main-content" class="page">
+    <h1 class="page__title">New Service Project</h1>
+    <p class="page__intro">Create a new service project.</p>
+
+    <% if (errors && errors.length > 0) { %>
+        <div class="form-errors" role="alert" aria-live="polite">
+            <p class="form-errors__title">Please fix the following:</p>
+            <ul class="form-errors__list">
+                <% errors.forEach(error => { %>
+                    <li><%= error.msg %></li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+
+    <form class="form" action="/new-project" method="POST" novalidate>
+        <div class="form__field">
+            <label class="form__label" for="organization_id">Organization</label>
+            <select class="form__select" id="organization_id" name="organization_id" required>
+                <option value="">-- Select an organization --</option>
+                <% organizations.forEach(org => { %>
+                    <option value="<%= org.organization_id %>"
+                        <%= String(project.organization_id) === String(org.organization_id) ? 'selected' : '' %>>
+                        <%= org.name %>
+                    </option>
+                <% }); %>
+            </select>
+        </div>
+
+        <div class="form__field">
+            <label class="form__label" for="title">Title</label>
+            <input class="form__input" type="text" id="title" name="title"
+                value="<%= project.title %>" required maxlength="200">
+        </div>
+
+        <div class="form__field">
+            <label class="form__label" for="description">Description</label>
+            <textarea class="form__textarea" id="description" name="description"
+                required minlength="10"><%= project.description %></textarea>
+        </div>
+
+        <div class="form__field">
+            <label class="form__label" for="location">Location</label>
+            <input class="form__input" type="text" id="location" name="location"
+                value="<%= project.location %>" required maxlength="200">
+        </div>
+
+        <div class="form__field">
+            <label class="form__label" for="project_date">Project Date</label>
+            <input class="form__input" type="date" id="project_date" name="project_date"
+                value="<%= project.project_date %>" required>
+        </div>
+
+        <div class="form__actions">
+            <button class="button button--primary" type="submit">Create Project</button>
+            <a class="button button--secondary" href="/projects">Cancel</a>
+        </div>
+    </form>
+</main>
+<%- include('partials/footer') %>

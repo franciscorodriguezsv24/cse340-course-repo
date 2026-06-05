@@ -2,6 +2,9 @@
 <main id="main-content" class="page">
     <h1 class="page__title"><%= title %></h1>
     <h2 class="page__subtitle">Upcoming Service Projects</h2>
+    <p class="page__actions">
+        <a class="button button--primary" href="/new-project">+ New Project</a>
+    </p>
     <% if (projects.length === 0) { %>
         <p class="page__intro">No upcoming service projects at this time.</p>
     <% } else { %>
@@ -14,6 +17,7 @@
                     </a>
                     <span class="card-list__meta">
                         <a class="card-list__org-link" href="/organization/<%= project.organization_id %>"><%= project.organization_name %></a>
+                        <a class="card-list__edit" href="/edit-project/<%= project.project_id %>">Edit</a>
                     </span>
                     <span class="card-list__text"><%= project.description %></span>
                     <span class="card-list__meta"><%= project.location %></span>

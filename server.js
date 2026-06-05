@@ -1,5 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
+import session from 'express-session';
+import flash from 'connect-flash';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
@@ -11,6 +13,7 @@ import categoryRoutes from './src/routes/categories.js';
 
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
 const PORT = process.env.PORT || 3000;
+const SESSION_SECRET = process.env.SESSION_SECRET || 'cse340-dev-secret';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,8 +26,21 @@ app.set('views', path.join(__dirname, 'src/views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60
+    }
+}));
+app.use(flash());
+
 app.use((req, res, next) => {
     res.locals.path = req.path;
+    res.locals.successMessages = req.flash('success');
+    res.locals.errorMessages = req.flash('error');
     next();
 });
 

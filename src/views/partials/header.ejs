@@ -24,3 +24,13 @@
             </nav>
         </div>
     </header>
+    <% if ((successMessages && successMessages.length > 0) || (errorMessages && errorMessages.length > 0)) { %>
+        <div class="flash" role="status" aria-live="polite">
+            <% successMessages.forEach(msg => { %>
+                <p class="flash__item flash__item--success"><%= msg %></p>
+            <% }); %>
+            <% errorMessages.forEach(msg => { %>
+                <p class="flash__item flash__item--error"><%= msg %></p>
+            <% }); %>
+        </div>
+    <% } %>

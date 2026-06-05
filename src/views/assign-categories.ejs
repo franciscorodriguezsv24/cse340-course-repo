@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+<main id="main-content" class="page">
+    <h1 class="page__title">Assign Categories</h1>
+    <p class="page__intro">Select the categories that apply to <strong><%= project.title %></strong>.</p>
+
+    <form class="form" action="/assign-categories/<%= project.project_id %>" method="POST" novalidate>
+        <% if (categories.length === 0) { %>
+            <p>No categories exist yet. <a href="/new-category">Create one first.</a></p>
+        <% } else { %>
+            <ul class="checkbox-list">
+                <% categories.forEach(category => { %>
+                    <li class="checkbox-list__item">
+                        <input type="checkbox"
+                            id="category-<%= category.category_id %>"
+                            name="category_ids"
+                            value="<%= category.category_id %>"
+                            <%= category.checked ? 'checked' : '' %>>
+                        <label for="category-<%= category.category_id %>"><%= category.name %></label>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+
+        <div class="form__actions">
+            <button class="button button--primary" type="submit">Save Categories</button>
+            <a class="button button--secondary" href="/project/<%= project.project_id %>">Cancel</a>
+        </div>
+    </form>
+</main>
+<%- include('partials/footer') %>

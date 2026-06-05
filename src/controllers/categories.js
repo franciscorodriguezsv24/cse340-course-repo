@@ -61,7 +61,8 @@ const processNewCategory = async (req, res) => {
         });
     }
 
-    await createCategory(name);
+    const created = await createCategory(name);
+    req.flash('success', `Category "${created.name}" was created.`);
     res.redirect('/categories');
 };
 
@@ -109,6 +110,7 @@ const processEditCategory = async (req, res, next) => {
         return next();
     }
 
+    req.flash('success', `Category "${updated.name}" was updated.`);
     res.redirect('/categories');
 };
 

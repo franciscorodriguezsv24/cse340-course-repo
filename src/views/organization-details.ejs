@@ -6,6 +6,7 @@
             <div>
                 <h1 class="page__title"><%= organization.name %></h1>
                 <a class="detail__email" href="mailto:<%= organization.contact_email %>"><%= organization.contact_email %></a>
+                <p class="detail__edit"><a href="/edit-organization/<%= organization.organization_id %>">Edit organization</a></p>
             </div>
         </header>
         <p class="detail__description"><%= organization.description %></p>
