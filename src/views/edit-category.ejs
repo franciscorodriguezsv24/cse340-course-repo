@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+<main id="main-content" class="page">
+    <h1 class="page__title">Edit Category</h1>
+    <p class="page__intro">Update the name of this category.</p>
+
+    <% if (errors && errors.length > 0) { %>
+        <div class="form-errors" role="alert" aria-live="polite">
+            <p class="form-errors__title">Please fix the following:</p>
+            <ul class="form-errors__list">
+                <% errors.forEach(error => { %>
+                    <li><%= error.msg %></li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+
+    <form class="form" action="/edit-category/<%= category.category_id %>" method="POST" novalidate>
+        <div class="form__field">
+            <label class="form__label" for="name">Category Name</label>
+            <input
+                class="form__input"
+                type="text"
+                id="name"
+                name="name"
+                value="<%= category.name %>"
+                required
+                maxlength="100"
+                autocomplete="off"
+            >
+        </div>
+
+        <div class="form__actions">
+            <button class="button button--primary" type="submit">Save Changes</button>
+            <a class="button button--secondary" href="/categories">Cancel</a>
+        </div>
+    </form>
+</main>
+<%- include('partials/footer') %>

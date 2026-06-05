@@ -2,10 +2,14 @@
 <main id="main-content" class="page">
     <h1 class="page__title"><%= title %></h1>
     <p class="page__intro">Browse service opportunities by category:</p>
+    <p class="page__actions">
+        <a class="button button--primary" href="/new-category">+ New Category</a>
+    </p>
     <ul class="pill-list">
         <% categories.forEach(category => { %>
-            <li>
+            <li class="pill-list__row">
                 <a class="pill-list__item" href="/category/<%= category.category_id %>"><%= category.name %></a>
+                <a class="pill-list__edit" href="/edit-category/<%= category.category_id %>">Edit</a>
             </li>
         <% }); %>
     </ul>

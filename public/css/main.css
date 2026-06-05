@@ -551,6 +551,125 @@ a.pill-list__item:hover {
     color: var(--color-accent-hover);
 }
 
+.pill-list__row {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.pill-list__edit {
+    font-size: 0.9rem;
+    color: var(--color-link);
+    text-decoration: underline;
+}
+
+.pill-list__edit:hover {
+    color: var(--color-link-hover);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Forms                                                                       */
+/* -------------------------------------------------------------------------- */
+
+.page__actions {
+    margin: 0 0 var(--space-md);
+}
+
+.form {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    max-width: 32rem;
+}
+
+.form__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+}
+
+.form__label {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.form__input {
+    font: inherit;
+    padding: var(--space-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.form__input:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+.form__actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    font: inherit;
+}
+
+.button--primary {
+    background: var(--color-accent);
+    color: #ffffff;
+}
+
+.button--primary:hover {
+    background: var(--color-accent-hover);
+    color: #ffffff;
+}
+
+.button--secondary {
+    background: transparent;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.button--secondary:hover {
+    background: var(--color-accent-soft);
+    color: var(--color-accent-hover);
+}
+
+.form-errors {
+    background: #fdecea;
+    border: 1px solid #f5c2c0;
+    color: #7a1f1c;
+    border-radius: var(--radius-sm);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    max-width: 32rem;
+}
+
+.form-errors__title {
+    margin: 0 0 var(--space-xs);
+    font-weight: 700;
+}
+
+.form-errors__list {
+    margin: 0;
+    padding-left: var(--space-md);
+}
+
 /* -------------------------------------------------------------------------- */
 /* Footer                                                                      */
 /* -------------------------------------------------------------------------- */
