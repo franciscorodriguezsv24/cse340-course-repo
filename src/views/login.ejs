@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+<main id="main-content" class="page">
+    <h1 class="page__title">Log In</h1>
+    <p class="page__intro">Log in to access your dashboard.</p>
+
+    <% if (errors && errors.length > 0) { %>
+        <div class="form-errors" role="alert" aria-live="polite">
+            <p class="form-errors__title">Please fix the following:</p>
+            <ul class="form-errors__list">
+                <% errors.forEach(error => { %>
+                    <li><%= error.msg %></li>
+                <% }); %>
+            </ul>
+        </div>
+    <% } %>
+
+    <form class="form" action="/login" method="POST" novalidate>
+        <div class="form__field">
+            <label class="form__label" for="email">Email</label>
+            <input
+                class="form__input"
+                type="email"
+                id="email"
+                name="email"
+                value="<%= account.email %>"
+                required
+                maxlength="255"
+                autocomplete="email"
+            >
+        </div>
+
+        <div class="form__field">
+            <label class="form__label" for="password">Password</label>
+            <input
+                class="form__input"
+                type="password"
+                id="password"
+                name="password"
+                required
+                autocomplete="current-password"
+            >
+        </div>
+
+        <div class="form__actions">
+            <button class="button button--primary" type="submit">Log In</button>
+        </div>
+    </form>
+
+    <p class="page__intro">Don't have an account? <a href="/register">Register here</a>.</p>
+</main>
+<%- include('partials/footer') %>

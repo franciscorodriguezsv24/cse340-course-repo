@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+<main id="main-content" class="page">
+    <h1 class="page__title"><%= title %></h1>
+    <p class="page__intro">All accounts registered with the CSE 340 Service Network.</p>
+
+    <div class="data-table-wrap">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% accounts.forEach(user => { %>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><span class="role-badge"><%= user.role %></span></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</main>
+<%- include('partials/footer') %>

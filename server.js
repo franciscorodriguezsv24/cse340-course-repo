@@ -10,6 +10,7 @@ import homeRoutes from './src/routes/home.js';
 import organizationRoutes from './src/routes/organizations.js';
 import projectRoutes from './src/routes/projects.js';
 import categoryRoutes from './src/routes/categories.js';
+import accountRoutes from './src/routes/accounts.js';
 
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
 const PORT = process.env.PORT || 3000;
@@ -41,6 +42,8 @@ app.use((req, res, next) => {
     res.locals.path = req.path;
     res.locals.successMessages = req.flash('success');
     res.locals.errorMessages = req.flash('error');
+    res.locals.account = req.session.account || null;
+    res.locals.loggedin = Boolean(req.session.account);
     next();
 });
 
@@ -48,6 +51,7 @@ app.use('/', homeRoutes);
 app.use('/', organizationRoutes);
 app.use('/', projectRoutes);
 app.use('/', categoryRoutes);
+app.use('/', accountRoutes);
 
 app.use((req, res) => {
     res.status(404).render('errors/404', { title: 'Page Not Found' });

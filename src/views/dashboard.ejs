@@ -1,0 +1,14 @@
+<%- include('partials/header') %>
+<main id="main-content" class="page">
+    <h1 class="page__title">Dashboard</h1>
+    <p class="page__intro">Welcome, <%= account.name %>. You are logged in as <strong><%= account.role %></strong>.</p>
+
+    <ul class="pill-list">
+        <% if (account.role === 'admin') { %>
+            <li class="pill-list__row">
+                <a class="pill-list__item" href="/users">Manage Registered Users</a>
+            </li>
+        <% } %>
+    </ul>
+</main>
+<%- include('partials/footer') %>

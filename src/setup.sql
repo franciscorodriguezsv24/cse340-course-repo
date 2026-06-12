@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS project_category;
 DROP TABLE IF EXISTS project;
 DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS organization;
+DROP TABLE IF EXISTS account;
 
 -- ========================================
 -- Organization
@@ -109,3 +110,19 @@ VALUES
 (13, 2), (13, 3),   -- Tutoring → Educational, Community Service
 (14, 4), (14, 3),   -- Blood Drive → Health and Wellness, Community Service
 (15, 3);            -- Winter Coat Drive → Community Service
+
+-- ========================================
+-- Account
+-- Registered users who can log in. Roles control access to
+-- protected pages (e.g. only 'admin' may view the users list).
+-- Passwords are stored as bcrypt hashes, never plain text.
+-- The admin testing account is seeded separately in scripts/init-db.js
+-- so its password can be hashed at runtime.
+-- ========================================
+CREATE TABLE account (
+    account_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL DEFAULT 'user'
+);

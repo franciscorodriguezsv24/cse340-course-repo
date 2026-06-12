@@ -20,6 +20,16 @@
                     <li><a class="site-nav__link" href="/organizations" <% if (path === '/organizations') { %>aria-current="page" <% } %>>Organizations</a></li>
                     <li><a class="site-nav__link" href="/projects" <% if (path === '/projects') { %>aria-current="page" <% } %>>Projects</a></li>
                     <li><a class="site-nav__link" href="/categories" <% if (path === '/categories') { %>aria-current="page" <% } %>>Categories</a></li>
+                    <% if (loggedin) { %>
+                        <li><a class="site-nav__link" href="/dashboard" <% if (path === '/dashboard') { %>aria-current="page" <% } %>>Dashboard</a></li>
+                        <li>
+                            <form class="site-nav__logout" action="/logout" method="POST">
+                                <button class="site-nav__link site-nav__link--button" type="submit">Log Out</button>
+                            </form>
+                        </li>
+                    <% } else { %>
+                        <li><a class="site-nav__link" href="/login" <% if (path === '/login') { %>aria-current="page" <% } %>>Log In</a></li>
+                    <% } %>
                 </ul>
             </nav>
         </div>
