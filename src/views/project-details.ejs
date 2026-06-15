@@ -19,6 +19,21 @@
         </dl>
         <p class="detail__description"><%= project.description %></p>
 
+        <% if (loggedin) { %>
+            <div class="detail__volunteer">
+                <% if (isVolunteering) { %>
+                    <p class="detail__volunteer-status">You are volunteering for this project.</p>
+                    <form action="/project/<%= project.project_id %>/unvolunteer" method="post">
+                        <button type="submit" class="button button--secondary">Remove me as a volunteer</button>
+                    </form>
+                <% } else { %>
+                    <form action="/project/<%= project.project_id %>/volunteer" method="post">
+                        <button type="submit" class="button">Volunteer for this project</button>
+                    </form>
+                <% } %>
+            </div>
+        <% } %>
+
         <p class="page__actions">
             <a class="button button--secondary" href="/edit-project/<%= project.project_id %>">Edit project</a>
             <a class="button button--secondary" href="/assign-categories/<%= project.project_id %>">Assign categories</a>

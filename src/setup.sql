@@ -3,6 +3,7 @@
 -- Re-runnable: drops dependent tables first.
 -- ========================================
 
+DROP TABLE IF EXISTS project_volunteer;
 DROP TABLE IF EXISTS project_category;
 DROP TABLE IF EXISTS project;
 DROP TABLE IF EXISTS category;
@@ -125,4 +126,17 @@ CREATE TABLE account (
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     role VARCHAR(20) NOT NULL DEFAULT 'user'
+);
+
+-- ========================================
+-- Account ↔ Project (many-to-many join table)
+-- Tracks which users have volunteered for which projects.
+-- A user can volunteer for many projects, and a project can have
+-- many volunteers. The composite primary key prevents a user from
+-- signing up for the same project more than once.
+-- ========================================
+CREATE TABLE project_volunteer (
+    account_id INTEGER NOT NULL REFERENCES account(account_id) ON DELETE CASCADE,
+    project_id INTEGER NOT NULL REFERENCES project(project_id) ON DELETE CASCADE,
+    PRIMARY KEY (account_id, project_id)
 );

@@ -6,6 +6,7 @@ import {
     getAccountByEmail,
     createAccount
 } from '../models/accounts.js';
+import { getProjectsByVolunteer } from '../models/volunteers.js';
 
 const registerValidationRules = [
     body('name')
@@ -122,8 +123,9 @@ const logout = (req, res) => {
     });
 };
 
-const showDashboard = (req, res) => {
-    res.render('dashboard', { title: 'Dashboard' });
+const showDashboard = async (req, res) => {
+    const volunteerProjects = await getProjectsByVolunteer(req.session.account.account_id);
+    res.render('dashboard', { title: 'Dashboard', volunteerProjects });
 };
 
 const showUsers = async (req, res) => {

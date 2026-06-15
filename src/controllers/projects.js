@@ -12,6 +12,11 @@ import {
     getCategoriesByProjectId
 } from '../models/categories.js';
 import { getAllOrganizations, getOrganizationById } from '../models/organizations.js';
+import {
+    addVolunteer,
+    removeVolunteer,
+    isVolunteer
+} from '../models/volunteers.js';
 
 const projectValidationRules = [
     body('organization_id')
@@ -74,7 +79,12 @@ const showProjectDetails = async (req, res, next) => {
     const categories = await getCategoriesByProjectId(projectId);
     const title = project.title;
 
-    res.render('project-details', { title, project, categories });
+    let isVolunteering = false;
+    if (req.session.account) {
+        isVolunteering = await isVolunteer(req.session.account.account_id, projectId);
+    }
+
+    res.render('project-details', { title, project, categories, isVolunteering });
 };
 
 const showNewProject = async (req, res) => {
@@ -237,9 +247,49 @@ const processAssignCategories = async (req, res, next) => {
     res.redirect(`/project/${projectId}`);
 };
 
+const volunteerForProject = async (req, res, next) => {
+    const projectId = Number(req.params.id);
+
+    if (!Number.isInteger(projectId) || projectId <= 0) {
+        return next();
+    }
+
+    const project = await getProjectById(projectId);
+
+    if (!project) {
+        return next();
+    }
+
+    await addVolunteer(req.session.account.account_id, projectId);
+    req.flash('success', `You are now volunteering for "${project.title}".`);
+    res.redirect(`/project/${projectId}`);
+};
+
+const removeVolunteerFromProject = async (req, res, next) => {
+    const projectId = Number(req.params.id);
+
+    if (!Number.isInteger(projectId) || projectId <= 0) {
+        return next();
+    }
+
+    const project = await getProjectById(projectId);
+
+    if (!project) {
+        return next();
+    }
+
+    await removeVolunteer(req.session.account.account_id, projectId);
+    req.flash('success', `You are no longer volunteering for "${project.title}".`);
+
+    const redirectTo = req.body.redirect === 'dashboard' ? '/dashboard' : `/project/${projectId}`;
+    res.redirect(redirectTo);
+};
+
 export {
     showProjects,
     showProjectDetails,
+    volunteerForProject,
+    removeVolunteerFromProject,
     showNewProject,
     processNewProject,
     showEditProject,
